@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { useTodo } from "./context/todoContext";
 
-function App() {
+const Header = React.lazy(() => import("./modules/Header"));
+const Content = React.lazy(() => import("./modules/Content"));
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense>
+      <div className="flex flex-col items-center justify-center gap-5 container-1">
+        <Header></Header>
+        <Content></Content>
+      </div>
+    </Suspense>
   );
 }
-
-export default App;
